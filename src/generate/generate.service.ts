@@ -1,4 +1,5 @@
 import { Injectable } from "@nestjs/common";
+import { GenerateRequestDto } from "./dto/generate-request.dto.js";
 
 @Injectable()
 export class GenerateService {
@@ -6,5 +7,13 @@ export class GenerateService {
 
   getList() {
     return this.list;
+  }
+
+  generate(data: GenerateRequestDto) {
+    console.log(data);
+
+    return {
+      success: true
+    }
   }
 }

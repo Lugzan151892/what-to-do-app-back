@@ -1,6 +1,7 @@
-import { Controller, Get, Req } from "@nestjs/common";
+import { Body, Controller, Get, Post, Req } from "@nestjs/common";
 import type { Request } from "express";
 import { GenerateService } from "./generate.service.js";
+import { GenerateRequestDto } from "./dto/generate-request.dto.js";
 
 @Controller('generate')
 export class GenerateController {
@@ -12,5 +13,10 @@ export class GenerateController {
       data: 'test',
       result,
     }
+  }
+
+  @Post()
+  handleGenerate(@Body() generateDto: GenerateRequestDto) {
+    return this.generateService.generate(generateDto)
   }
 }
